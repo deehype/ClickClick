@@ -7,17 +7,29 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    [SerializeField] private int maxScore = 100;
+    private int score;
+
     private void Awake()
     {
         Instance = this;
     }
-    void Start()
+
+    private void Start()
     {
-        
+        UIManager.Instance.OnScoreChange(this.score, maxScore);
+
     }
 
-    void Update()
+    public void CalculateScore(bool isApple)
     {
-        
+        if(isApple)
+        {
+            score++;    
+        } else
+        {
+            score--;
+        }
+        UIManager.Instance.OnScoreChange(score, maxScore);
     }
 }

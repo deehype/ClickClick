@@ -26,16 +26,6 @@ public class NoteManager : MonoBehaviour
                 noteGroup.OnInput(isApple);
             }
         }
-
-        if (keyCode == KeyCode.A)
-        {
-            noteGroupArr[0].OnInput(isApple);
-        }
-
-        if (keyCode == KeyCode.S) 
-        {
-            noteGroupArr[1].OnInput(isApple);
-        }
         Debug.Log("Keycode = " + keyCode);
     }
 }
