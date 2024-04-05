@@ -5,32 +5,27 @@ using UnityEngine;
 public class InputManager : MonoBehaviour
 {
     public static InputManager Instance;
+    private List<KeyCode> keyCodeList = new List<KeyCode>();
 
     private void Awake()
     {
         Instance = this;
     }
 
-    void Start()
+    public void AddKeyCode(KeyCode keyCode)
     {
-        
+        keyCodeList.Add(keyCode);
     }
 
     private void Update()
     {
-        if (Input.GetKeyUp(KeyCode.A))
+        foreach (KeyCode keyCode in keyCodeList)
         {
-            NoteManager.Instance.OnInput(KeyCode.A);
+            if (Input.GetKeyUp(keyCode))
+            {
+                NoteManager.Instance.OnInput(keyCode);
+            }
         }
 
-        if (Input.GetKeyUp(KeyCode.S))
-        {
-            NoteManager.Instance.OnInput(KeyCode.S);
-        }
-
-        if (Input.GetKeyUp(KeyCode.D))
-        {
-            NoteManager.Instance.OnInput(KeyCode.D);
-        }
     }
 }
