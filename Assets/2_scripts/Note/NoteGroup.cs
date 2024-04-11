@@ -63,7 +63,7 @@ public class NoteGroup : MonoBehaviour
 
         //노트 삭제
         Note delNote = noteList[0];
-        delNote.DeleteNote();
+        delNote.CalScoreAndDeleteNote();
         noteList.RemoveAt(0);
 
         //정렬

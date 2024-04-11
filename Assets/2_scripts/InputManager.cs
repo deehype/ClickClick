@@ -24,6 +24,7 @@ public class InputManager : MonoBehaviour
             if (Input.GetKeyUp(keyCode))
             {
                 NoteManager.Instance.OnInput(keyCode);
+                break;
             }
         }
 

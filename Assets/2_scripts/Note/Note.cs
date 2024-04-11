@@ -15,7 +15,7 @@ public class Note : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void DeleteNote()
+    public void CalScoreAndDeleteNote()
     {
         GameManager.Instance.CalculateScore(isApple);
         Destroy();
