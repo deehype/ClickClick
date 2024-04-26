@@ -8,8 +8,9 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private int maxScore = 100;
     [SerializeField] private int noteGroupCreateScore = 10;
-    [SerializeField] private GameObject gameClearObj;
-    [SerializeField] private GameObject gameOverObj;
+    private bool isGameClear = false;
+    private bool isGameOvcer = false;
+
 
     private int score;
     private int nextNoteGroupUnlockCnt;
@@ -21,7 +22,7 @@ public class GameManager : MonoBehaviour
     {
         get
         { 
-            if (gameClearObj.activeSelf || gameOverObj.activeSelf)
+            if (isGameClear || isGameOvcer)
                 return true;
             else
                 return false;
@@ -37,9 +38,6 @@ public class GameManager : MonoBehaviour
     {
         UIManager.Instance.OnScoreChange(this.score, maxScore);
         NoteManager.Instance.Create();
-
-        gameClearObj.SetActive(false);
-        gameOverObj.SetActive(false);
 
         StartCoroutine(TimerCoroutine());
     }
@@ -60,7 +58,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        gameOverObj.SetActive(true);
+        isGameOvcer = true;
 
         Debug.Log("Game Over");
     }
@@ -80,7 +78,7 @@ public class GameManager : MonoBehaviour
 
             if (maxScore <= score)
             {
-                gameClearObj.SetActive(true);
+                isGameClear = true;
                 Debug.Log("Game Clear!..");
             }
 
