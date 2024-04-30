@@ -10,20 +10,29 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int noteGroupCreateScore = 10;
     private bool isGameClear = false;
     private bool isGameOvcer = false;
-
-
     private int score;
     private int nextNoteGroupUnlockCnt;
 
     [SerializeField] private float maxTime = 30f;
-
+    public float myTime;
+    public float minTime;
     
+
+
     public bool IsGameDone
     {
         get
-        { 
+        {
             if (isGameClear || isGameOvcer)
+            {
+                minTime = PlayerPrefs.GetFloat("minTime", 1000f);
+                if (minTime > minTime)
+                {
+                    minTime = myTime;
+                }
+                SceneManager.LoadScene("Main");
                 return true;
+            }
             else
                 return false;
         }
@@ -32,6 +41,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        minTime = maxScore;
     }
 
     private void Start()

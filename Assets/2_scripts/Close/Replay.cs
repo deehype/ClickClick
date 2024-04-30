@@ -1,16 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-public class PlayButton : MonoBehaviour
+
+public class Replay : MonoBehaviour
 {
-    public void OnStartButtonClick()
+    public void OnRestartButtonClick()
     {
-        string sceneName = "Main";
         SceneManager.LoadScene("Main");
     }
-
+    public void ReplayGame()
+    {
+        
+    }
+ 
     void Start()
     {
         

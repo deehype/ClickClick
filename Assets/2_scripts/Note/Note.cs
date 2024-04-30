@@ -17,6 +17,15 @@ public class Note : MonoBehaviour
 
     public void CalScoreAndDeleteNote()
     {
+        if (this.isApple)
+        {
+            SoundManager.Instance.Sound(Define.Sound.Apple);
+        } 
+        else
+        {
+            SoundManager.Instance.Sound(Define.Sound.Blueberry);
+        }
+
         GameManager.Instance.CalculateScore(isApple);
         Destroy();
     }
