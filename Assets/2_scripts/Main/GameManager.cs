@@ -9,8 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int maxScore = 100;
     [SerializeField] private int noteGroupCreateScore = 10;
     private bool isGameClear = false;
-    private bool isGameOvcer = false;
-    private int score;
+    private bool isGameOver = false;
     private int nextNoteGroupUnlockCnt;
 
     [SerializeField] private float maxTime = 30f;
@@ -23,7 +22,7 @@ public class GameManager : MonoBehaviour
     {
         get
         {
-            if (isGameClear || isGameOvcer)
+            if (isGameClear || isGameOver)
             {
                 minTime = PlayerPrefs.GetFloat("minTime", 1000f);
                 if (minTime > minTime)
@@ -46,7 +45,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        UIManager.Instance.OnScoreChange(this.score, maxScore);
+        UIManager.Instance.OnScoreChange(Score.score, maxScore);
         NoteManager.Instance.Create();
 
         StartCoroutine(TimerCoroutine());
@@ -64,12 +63,14 @@ public class GameManager : MonoBehaviour
 
             if (IsGameDone)
             {
+                SceneManager.LoadScene("Close");
                 yield break;
             }
         }
 
-        isGameOvcer = true;
-
+        isGameOver = true;
+        
+        SceneManager.LoadScene("Close");
         Debug.Log("Game Over");
     }
 
@@ -77,7 +78,7 @@ public class GameManager : MonoBehaviour
     {
         if(isApple)
         {
-            score++;    
+            Score.score++;    
             nextNoteGroupUnlockCnt++;
 
             if(noteGroupCreateScore <= nextNoteGroupUnlockCnt)
@@ -86,21 +87,26 @@ public class GameManager : MonoBehaviour
                 NoteManager.Instance.CreateNoteGroup();  
             }
 
-            if (maxScore <= score)
+            if (maxScore <= Score.score)
             {
+                if (Score.score > Score.bestscore)
+                {
+                    Score.bestscore = Score.score;
+                }
                 isGameClear = true;
                 Debug.Log("Game Clear!..");
+                SceneManager.LoadScene("Close");
             }
 
         } else
         {
-            score--;
+            Score.score--;
         }
-        UIManager.Instance.OnScoreChange(score, maxScore);
+        UIManager.Instance.OnScoreChange(Score.score, maxScore);
     }
 
     public void Restart()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("Main");
     }
 }

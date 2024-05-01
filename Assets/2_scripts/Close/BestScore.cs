@@ -6,8 +6,8 @@ using UnityEngine.SocialPlatforms.Impl;
 
 public class NewBehaviourScript : MonoBehaviour
 {
-    private void Start()
+    void Start()
     {
-        
+        GetComponent<TextMeshProUGUI>().text = "Best Score : " + Score.bestscore.ToString();
     }
 }
