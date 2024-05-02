@@ -5,8 +5,8 @@ using UnityEngine;
 public class CloseManager : MonoBehaviour
 {
 
-    [SerializeField] private GameObject GameOver;
-    [SerializeField] private GameObject GameClear;
+    [SerializeField] public GameObject GameOver;
+    [SerializeField] public GameObject GameClear;
     void Start()
     {
         

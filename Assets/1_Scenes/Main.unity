@@ -623,8 +623,6 @@ MonoBehaviour:
   maxScore: 50
   noteGroupCreateScore: 10
   maxTime: 30
-  myTime: 0
-  minTime: 0
 --- !u!4 &654028019
 Transform:
   m_ObjectHideFlags: 0
