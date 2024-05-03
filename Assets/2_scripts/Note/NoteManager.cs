@@ -53,7 +53,7 @@ public class NoteManager : MonoBehaviour
     public void OnInput(KeyCode keyCode)
     {
         int randId = Random.Range(0, 10);
-        bool isApple = randId >= 2 ? true : false;
+        bool isApple = randId >= 3 ? true : false;
 
         foreach (NoteGroup noteGroup in noteGroupList)
         {

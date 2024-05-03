@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/1_Scenes/BoneAnimation.unity
+    guid: dbc780f3a96585c4e9f28b2ea4a49030
+  - enabled: 1
     path: Assets/1_Scenes/Main.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
